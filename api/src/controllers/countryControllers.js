@@ -1,0 +1,34 @@
+const axios = require('axios');
+const apiUrl = 'https://restcountries.com/v3/all';
+const { Country } = require('../db.js');
+
+async function getAllCountries(){
+    try {
+        let countries = (await axios(apiUrl)).data.map(country=>({
+            id: country.cca3,
+            name: country.name.common !== null ? country.name.common: 'No se encontró el nombre del pais',
+            flag: country.flags !== null ? country.flags: 'No se encontró la bandera del pais',             
+            region: country.region !== null ? country.region: 'No se encontró la región del pais',
+            capital: typeof country.capital !== 'undefined' ? country.capital[0]: 'No se encontró la capital del pais',
+            subregion: country.subregion,             
+            area: country.area,             
+            population: country.population
+        }))
+        await Country.bulkCreate(countries)
+        console.log('Paises cargados en la db correctamente')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+/*Para traer los episodios de mi db y mandarlos:*/
+function getAllCountriesFromDB(req, res, next) {
+    Episodes.findAll()
+    .then(countries => res.send(countries))
+    .catch(error => next(error))
+}
+
+module.exports = { getAllCountries, getAllCountriesFromDB };
+
+/*En este archivo tengo las funciones que van a permitir interactuar con la API o con la DB*/

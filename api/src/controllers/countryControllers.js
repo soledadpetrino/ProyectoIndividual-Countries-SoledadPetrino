@@ -23,12 +23,12 @@ async function getAllCountries(){
 
 
 /*Para traer los episodios de mi db y mandarlos:*/
-function getAllCountriesFromDB(req, res, next) {
-    Episodes.findAll()
+function getAllCountriesFromDb(req, res) {
+    Country.findAll()
     .then(countries => res.send(countries))
-    .catch(error => next(error))
+    .catch(error => (error))
 }
 
-module.exports = { getAllCountries, getAllCountriesFromDB };
+module.exports = { getAllCountries, getAllCountriesFromDb };
 
 /*En este archivo tengo las funciones que van a permitir interactuar con la API o con la DB*/

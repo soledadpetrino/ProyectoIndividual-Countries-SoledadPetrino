@@ -22,9 +22,9 @@ const { conn } = require('./src/db.js');
 const { getAllCountries } = require('./src/controllers/countryControllers.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(3002, async() => {
-    console.log('%s listening at 3002'); // eslint-disable-line no-console
+conn.sync({ force: true }).then(() => {
+  server.listen(3001, async() => {
+    console.log('%s listening at 3001'); // eslint-disable-line no-console
     await getAllCountries()
   });
 });

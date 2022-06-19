@@ -7,7 +7,7 @@ async function getAllCountries(){
         let countries = (await axios(apiUrl)).data.map(country=>({
             id: country.cca3,
             name: country.name.common !== null ? country.name.common: 'No se encontró el nombre del pais',
-            flag: country.flags !== null ? country.flags: 'No se encontró la bandera del pais',             
+            flag: country.flags !== null ? country.flags[0]: 'No se encontró la bandera',            
             region: country.region !== null ? country.region: 'No se encontró la región del pais',
             capital: typeof country.capital !== 'undefined' ? country.capital[0]: 'No se encontró la capital del pais',
             subregion: country.subregion,             

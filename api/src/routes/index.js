@@ -68,6 +68,8 @@ router.get('/countries/:id', async (req, res)=>{
             }
 });
 
+
+
 /* 
 - [ ] __POST /activity__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
@@ -86,11 +88,14 @@ router.post('/activity', async (req, res) => {
 })
 
 
+/*
+
 router.get('/activity', async (req, res) => {
     Activity.findAll()
         .then((result) => res.json(result))
         .catch((error) => res.status(404).json('Error con la base de datos de actividades'))
 })
+*/
 
 module.exports = router;
 

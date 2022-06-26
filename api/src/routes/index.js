@@ -87,6 +87,11 @@ router.post('/activity', async (req, res) => {
     res.status(200).send('Actividad creada con éxito');
 })
 
+router.get('/activities', async (req, res) => {
+    Activity.findAll()
+        .then((result) => res.json(result))
+        .catch((error) => res.status(404).json('Error con la base de datos de actividades'))
+})
 
 /*
 
@@ -98,5 +103,4 @@ router.get('/activity', async (req, res) => {
 */
 
 module.exports = router;
-
 

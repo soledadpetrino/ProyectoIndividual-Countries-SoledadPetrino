@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, filterCountriesByContinent } from '../actions';
+import { getCountries, filterCountriesByContinent, orderByName, filterByPopulation } from '../actions';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Paginado from './Paginado';
+import SearchBar from './SearchBar'; 
 
 
 
@@ -13,12 +14,13 @@ export default function Home() {
     
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
+    const[orden, setOrden] = useState ('');
     const[currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState (10);
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-
+    
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
@@ -30,6 +32,8 @@ export default function Home() {
             return setCountriesPerPage(10);
         }
     }
+
+
 
     useEffect( () => {
         pageValidation(currentPage);
@@ -49,7 +53,21 @@ export default function Home() {
         dispatch(filterCountriesByContinent(e.target.value));                                                       //va a tomar como payload el valor de cada uno de los value de las option del select
     }
 
+    function handleSort (e) {
+        e.preventDefault();
+        dispatch(orderByName(e.target.value));
+        setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
+        setOrden(`Ordenado ${e.target.value}`) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
+    };
+
+    function handleSortPop (e) {
+        e.preventDefault();
+        dispatch(filterByPopulation(e.target.value));
+        setCurrentPage(1); // cuando hago el ordenamiento lo hago desde la pagina 1, 
+        setOrden(`Ordenado ${e.target.value}`) // setOrden es un estado local que en un inicio va a estar vacio, para cuando seteo en la pagina 1, me modifica el estado local y renderiza
+    };
     
+
 
     return (
         <div>
@@ -59,11 +77,12 @@ export default function Home() {
                Volver a cargar todos los paises 
             </button>
             <div>
-                <select> 
-                    <option value = 'Asc'>Ascendente</option>  
-                    <option value = 'Desc'>Descendente</option> 
+                <select onChange={e => handleSort(e)}> 
+                    <option hiddend>Orden alfabéticamente</option>
+                    <option value = 'asc'>A-Z</option>  
+                    <option value = 'desc'>Z-A</option> 
                 </select>
-                <select> 
+                <select onChange={e => handleSortPop(e)}> 
                     <option value = 'ascpop'>Población Ascendente</option>  
                     <option value = 'descpop'>Población Descendente</option> 
                 </select>
@@ -83,6 +102,7 @@ export default function Home() {
             allCountries = { allCountries.length }
             paginated = { paginated }
             /> 
+            <SearchBar /> 
 
         { currentCountries?.map((c) => {
             return(

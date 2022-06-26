@@ -1,0 +1,71 @@
+.container {
+    width: 95vw; 
+    height: auto; 
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.backButton {
+    border: 1px solid rgb(6, 6, 41);
+    box-shadow: 0px 0px 3px rgb(165, 156, 156);
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(12, 41, 41);
+    margin: 10px 20px 20px 10px;
+    padding: 4px 16px;
+    width: auto;
+    cursor: pointer;
+    transition: 3s;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.backButton:hover {
+    box-shadow: 0px 2px 4px rgb(45, 31, 112);
+}
+.form {
+    display: inline-block;
+}
+
+.select {
+    position: center;
+    padding: 16px 32px;
+    border-radius: 4px;
+    height: 25px;
+    width: 500px;
+    padding: 8px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0px 0px 4px grey;
+    color:rgb(6, 6, 41);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(159, 173, 192);
+}
+
+.title {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.submitButton {
+    border: 1px solid rgb(6, 6, 41);
+    box-shadow: 0px 0px 3px rgb(165, 156, 156);
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(12, 41, 41);
+    margin: 8px 8px 8px 40px;
+    padding: 4px 16px;
+    width: auto;
+    cursor: pointer;
+    transition: 3s;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 600px;
+}
+
+.submitButton:hover {
+    box-shadow: 0px 2px 4px rgb(45, 31, 112);
+}

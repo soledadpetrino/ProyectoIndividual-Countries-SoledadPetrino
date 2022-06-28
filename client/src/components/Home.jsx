@@ -107,7 +107,7 @@ export default function Home() {
         { currentCountries?.map((c) => {
             return(
                 <fragment>
-                    <Link to = { '/home/' + c.id }>
+                    <Link to = { '/countries/' + c.id }>
                         <Card name = { c.name } flag = { c.flag } region = { c.region } key = { c.id }/>
                     </Link>
                 </fragment>

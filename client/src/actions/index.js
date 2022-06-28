@@ -69,6 +69,20 @@ export function filterByPopulation(payload) {
     }
 }
 
+export function getCountryDetails (id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get('http://localhost:3001/countries/' + id);
+            return dispatch ({
+                type: 'GET_COUNTRY_DETAILS',
+                payload: json.data
+            })
+    } catch (error) {
+        console.log(error)
+        }
+    }
+}
+
 
 
 

@@ -32,7 +32,7 @@
     position: center;
     padding: 16px 32px;
     border-radius: 4px;
-    height: 25px;
+    height: 60px;
     width: 500px;
     padding: 8px 16px;
     font-size: 18px;
@@ -42,6 +42,10 @@
     color:rgb(6, 6, 41);
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(159, 173, 192);
+}
+
+.errors {
+    font-size: 10px;
 }
 
 .title {
@@ -68,4 +72,21 @@
 
 .submitButton:hover {
     box-shadow: 0px 2px 4px rgb(45, 31, 112);
+}
+
+.countryContainer {
+    font-size: 20px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 50px 50px;
+}
+
+.country {
+
+}
+
+.deleteButton {
+    float:left
 }
